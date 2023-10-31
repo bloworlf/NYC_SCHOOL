@@ -200,8 +200,12 @@ fun AppBar(
 //            }
 //        )
 //    }
-
-    rememberSystemUiController().setStatusBarColor(
+    val uiController = rememberSystemUiController()
+    uiController.setStatusBarColor(
+        color = MaterialTheme.customColorsPalette.navigationColor,
+        darkIcons = !MaterialTheme.customColorsPalette.navigationColor.isDark()
+    )
+    uiController.setNavigationBarColor(
         color = MaterialTheme.customColorsPalette.navigationColor,
         darkIcons = !MaterialTheme.customColorsPalette.navigationColor.isDark()
     )
@@ -285,10 +289,6 @@ fun BottomBar(
     items: List<Screen>,
     currentDestination: NavDestination?
 ) {
-    rememberSystemUiController().setNavigationBarColor(
-        color = MaterialTheme.customColorsPalette.navigationColor,
-        darkIcons = !MaterialTheme.customColorsPalette.navigationColor.isDark()
-    )
     BottomNavigation(
 //        backgroundColor = color.value,
 //        contentColor = color.

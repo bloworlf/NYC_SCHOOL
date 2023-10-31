@@ -1,6 +1,7 @@
 package com.example.nyc_school.ui.pages.details
 
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.nyc_school.R
@@ -45,6 +47,7 @@ import com.example.nyc_school.ui.components.Expandable
 import com.example.nyc_school.ui.components.HeaderTextComponent
 import com.example.nyc_school.ui.components.IndicatorPosition
 import com.example.nyc_school.ui.components.IndicatorType
+import com.example.nyc_school.ui.components.TextDisplaySize
 import com.example.nyc_school.ui.components.TextFieldComponent
 import com.example.nyc_school.ui.components.TitleTextComponent
 import com.example.nyc_school.ui.components.ViewPagerColors
@@ -54,6 +57,7 @@ import com.example.nyc_school.ui.components.WaitDialog
 import com.example.nyc_school.ui.navigation.AppNavigationActions
 import com.example.nyc_school.ui.theme.customColorsPalette
 import com.example.nyc_school.utils.Utils.openMaps
+import com.example.nyc_school.utils.Utils.openUrl
 
 @Composable
 fun DetailScreen(
@@ -172,6 +176,26 @@ fun InfoPage(
                 .fillMaxSize()
                 .padding(8.dp)
         ) {
+
+            HeaderTextComponent(
+                modifier = Modifier.fillMaxWidth(),
+                text = model.schoolName ?: model.campusName ?: "",
+                textDisplaySize = TextDisplaySize.SMALL,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            model.website?.let {
+                BodyTextComponent(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            context.openUrl(url = it)
+                        },
+                    text = stringResource(R.string.school_s_website),
+                    textAlign = TextAlign.End
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
             BodyTextComponent(
                 modifier = Modifier.fillMaxWidth(),
                 text = model.overviewParagraph?.replace("+", " ") ?: ""

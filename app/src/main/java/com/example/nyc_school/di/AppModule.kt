@@ -27,47 +27,10 @@ class AppModule {
     //<editor-fold desc="Network">
     @Provides
     @Singleton
-    fun provideOkHttp(/*cache: Cache, deviceId: String*/): OkHttpClient {
+    fun provideOkHttp(): OkHttpClient {
         return OkHttpClient.Builder()
-//            .cache(cache)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
-//            .certificatePinner(CertificatePinner.Builder().add("","").build())
-//            .addInterceptor { chain ->
-//                // Get the request from the chain.
-//                var request = chain.request()
-//
-//                request = if (App.instance.hasNetwork()!!) {
-//                    /*
-//                        *  If there is Internet, get the cache that was stored 5 seconds ago.
-//                        *  If the cache is older than 5 seconds, then discard it,
-//                        *  and indicate an error in fetching the response.
-//                        *  The 'max-age' attribute is responsible for this behavior.
-//                        */
-//                    request.newBuilder().header("Cache-Control", "public, max-age=" + 5)
-//                } else {
-//                    /*
-//                        *  If there is no Internet, get the cache that was stored 7 days ago.
-//                        *  If the cache is older than 7 days, then discard it,
-//                        *  and indicate an error in fetching the response.
-//                        *  The 'max-stale' attribute is responsible for this behavior.
-//                        *  The 'only-if-cached' attribute indicates to not retrieve new data; fetch the cache only instead.
-//                        */
-//                    request.newBuilder().header(
-//                        "Cache-Control",
-//                        "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
-//                    )
-//                }
-//                    .header("x-device-id", deviceId)
-//                    .header("x-api-key", "")
-//                    .header("x-session-key", "")
-//                    .header("x-user-agent", "")
-//                    .method(request.method, request.body)
-//                    .build()
-//
-//                // Add the modified request to the chain.
-//                chain.proceed(request)
-//            }
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
             })

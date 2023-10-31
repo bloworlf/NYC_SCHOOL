@@ -3,9 +3,14 @@ package com.example.nyc_school.utils
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.net.Uri
+import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsService
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import java.net.URLEncoder
@@ -69,6 +74,53 @@ object Utils {
         mapIntent.setPackage("com.google.android.apps.maps")
         mapIntent.resolveActivity(packageManager)?.let {
             startActivity(mapIntent)
+        }
+    }
+
+    private fun getCustomTabsPackages(context: Context, url: Uri?): MutableList<ResolveInfo> {
+        val pm = context.packageManager
+
+        val activityIntent = Intent(Intent.ACTION_VIEW, url)
+
+        val resolvedActivityList = pm.queryIntentActivities(activityIntent, 0)
+        val packagesSupportingCustomTabs: MutableList<ResolveInfo> = mutableListOf()
+        for (info in resolvedActivityList) {
+            val serviceIntent = Intent()
+            serviceIntent.action = CustomTabsService.ACTION_CUSTOM_TABS_CONNECTION
+            serviceIntent.setPackage(info.activityInfo.packageName)
+
+            if (pm.resolveService(serviceIntent, 0) != null) {
+                packagesSupportingCustomTabs.add(info)
+            }
+        }
+        return packagesSupportingCustomTabs
+    }
+
+    fun Context.openUrl(url: String, color: Color = Color.Black) {
+        if (getCustomTabsPackages(this, Uri.parse(url)).size > 0) {
+            val builder: CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+            builder.setNavigationBarColor(color.toArgb())
+            builder.setToolbarColor(color.toArgb())
+            builder.setShowTitle(true)
+            val customTabsIntent: CustomTabsIntent = builder.build()
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://"))
+            val resolveInfo = packageManager.resolveActivity(
+                browserIntent,
+                PackageManager.MATCH_DEFAULT_ONLY
+            )
+            if ((resolveInfo != null) && resolveInfo.activityInfo.packageName.isNotEmpty()) {
+                customTabsIntent.intent.setPackage(resolveInfo.activityInfo.packageName)
+            }
+            url?.let {
+                customTabsIntent.launchUrl(this, Uri.parse(url))
+            }
+
+        } else {
+            Toast.makeText(
+                this,
+                "Couldn't find an app to open the web page.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

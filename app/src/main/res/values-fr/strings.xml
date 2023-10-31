@@ -29,4 +29,5 @@
     <string name="sat_math_avg_score">Score moyen en mathématiques SAT</string>
     <string name="sat_writing_avg_score">Score moyen d\'écriture SAT</string>
     <string name="load_more">Charger Plus…</string>
+    <string name="school_s_website">Siteweb de l\'école</string>
 </resources>

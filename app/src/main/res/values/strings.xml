@@ -28,4 +28,5 @@
     <string name="sat_math_avg_score">SAT math average score</string>
     <string name="sat_writing_avg_score">SAT writing average score</string>
     <string name="load_more">Load More…</string>
+    <string name="school_s_website">School\'s website</string>
 </resources>

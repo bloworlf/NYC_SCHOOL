@@ -132,6 +132,8 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.0")
     kapt("androidx.room:room-compiler:2.6.0")
 
+    implementation("androidx.browser:browser:1.6.0")
+
     implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
