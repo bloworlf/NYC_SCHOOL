@@ -27,6 +27,9 @@ object Common {
     object API {
         //https://data.cityofnewyork.us/resource/s3k6-pzi2.json
         const val BASE_URL = "https://data.cityofnewyork.us/resource/"
+//        const val API_VERSION =
         const val SCHOOL_INFO = BASE_URL + "s3k6-pzi2.json"
+//        const val SAT_SCORE = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
+        const val SAT_SCORE = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
     }
 }

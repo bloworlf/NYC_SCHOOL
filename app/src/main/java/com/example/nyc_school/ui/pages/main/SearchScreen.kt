@@ -2,8 +2,6 @@ package com.example.nyc_school.ui.pages.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,14 +12,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.nyc_school.data.model.school.SchoolModel
+import com.example.nyc_school.data.model.SchoolModel
 import com.example.nyc_school.data.network.response.ErrorCode
 import com.example.nyc_school.data.vm.SchoolViewModel
 import com.example.nyc_school.ui.components.ErrorDialog
 import com.example.nyc_school.ui.components.SearchBar
 import com.example.nyc_school.ui.components.WaitDialog
 import com.example.nyc_school.ui.navigation.AppNavigationActions
-import com.example.nyc_school.ui.pages.details.DisplayDetailScreen
 
 @Composable
 fun SearchScreen(
@@ -70,7 +67,7 @@ fun SearchScreen(
                     //display data
                     it.content?.let { list ->
                         DisplayData(
-                            content = list,
+                            content = list as List<SchoolModel>,
                             onItemClick = {},
                             onFooterClick = {},
                             onRefresh = {}

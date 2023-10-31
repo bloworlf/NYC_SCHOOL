@@ -33,10 +33,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.nyc_school.data.model.school.SchoolModel
+import com.example.nyc_school.data.model.SchoolModel
 import com.example.nyc_school.data.network.response.ErrorCode
 import com.example.nyc_school.data.vm.SchoolViewModel
 import com.example.nyc_school.ui.components.BodyTextComponent
@@ -83,7 +82,7 @@ fun HomeScreen(
                 //display data
                 DisplayData(
                     isRefreshing = isRefreshing ?: false,
-                    content = it.content,
+                    content = it.content as List<SchoolModel>,
                     onItemClick = { dbn ->
                         navActions.navigateTo(
                             screen = Screen.Details,

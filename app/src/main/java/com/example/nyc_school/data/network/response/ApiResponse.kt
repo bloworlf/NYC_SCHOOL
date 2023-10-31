@@ -1,6 +1,7 @@
 package com.example.nyc_school.data.network.response
 
-import com.example.nyc_school.data.model.school.SchoolModel
+import com.example.nyc_school.data.model.ApiResponseContent
+import com.example.nyc_school.data.model.SchoolModel
 
 data class ResponseStatus(
     val code: ErrorCode = ErrorCode.UNDEFINED,
@@ -16,6 +17,6 @@ enum class ErrorCode{
 
 data class ApiResponse(
     val status: ResponseStatus = ResponseStatus(),
-    val content: List<SchoolModel>? = null
+    val content: List<ApiResponseContent>? = null
 )
 

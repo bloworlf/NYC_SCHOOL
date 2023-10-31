@@ -1,6 +1,6 @@
 package com.example.nyc_school.utils
 
-import com.example.nyc_school.data.model.school.SchoolModel
+import com.example.nyc_school.data.model.SchoolModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type

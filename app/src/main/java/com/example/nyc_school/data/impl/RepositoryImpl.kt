@@ -43,6 +43,22 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getScore(dbn: String): ApiResponse {
+        return try {
+            val value = apiCall.getScore(dbn)
+            ApiResponse(
+                status = ResponseStatus(code = ErrorCode.SUCCESS),
+                content = value
+            )
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ApiResponse(
+                status = ResponseStatus(code = ErrorCode.ERROR, message = e.message)
+            )
+        }
+    }
+
     override suspend fun getByName(schoolName: String): ApiResponse {
         return try {
             val value = apiCall.getByName(schoolName).sortedBy { it.schoolName }
