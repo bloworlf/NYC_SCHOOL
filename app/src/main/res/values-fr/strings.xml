@@ -28,4 +28,5 @@
     <string name="sat_critical_reading_avg_score">Score moyen de lecture critique SAT</string>
     <string name="sat_math_avg_score">Score moyen en mathématiques SAT</string>
     <string name="sat_writing_avg_score">Score moyen d\'écriture SAT</string>
+    <string name="load_more">Charger Plus…</string>
 </resources>

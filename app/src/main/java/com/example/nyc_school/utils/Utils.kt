@@ -14,6 +14,10 @@ import java.nio.charset.StandardCharsets
 
 object Utils {
 
+    /**
+     * Checks if a [Color][Color] is dark or not
+     * @return true if the luminance is less than 0.5
+     */
     fun Color.isDark(): Boolean {
         return this.luminance() < .5f
     }
@@ -40,9 +44,24 @@ object Utils {
         return true
     }
 
+    /**
+     * Opens Google Maps and add a marker to the desired [latitude][lat] and [longitude][lon]
+     * @param lat the desired latitude
+     * @param lon the desired longitude
+     * @param place the name of the marker
+     */
     fun Context.openMaps(lat: String, lon: String, place: String? = null) {
 //        val uri = "geo:$lat,$lon${place?.let { "?q$it" }}"
-        val uri = "geo:0,0?q=$lat,$lon${place?.let { "(${URLEncoder.encode(it, StandardCharsets.UTF_8.toString())})" }}"
+        val uri = "geo:0,0?q=$lat,$lon${
+            place?.let {
+                "(${
+                    URLEncoder.encode(
+                        it,
+                        StandardCharsets.UTF_8.toString()
+                    )
+                })"
+            }
+        }"
 //        val uri = "http://maps.google.com/maps?f=d&hl=en&saddr=$lat,$lon"
 
         val gmmIntentUri = Uri.parse(uri)

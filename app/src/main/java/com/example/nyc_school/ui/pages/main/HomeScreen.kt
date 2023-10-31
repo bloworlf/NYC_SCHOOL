@@ -33,8 +33,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.nyc_school.R
 import com.example.nyc_school.data.model.SchoolModel
 import com.example.nyc_school.data.network.response.ErrorCode
 import com.example.nyc_school.data.vm.SchoolViewModel
@@ -215,7 +217,7 @@ fun Footer(
         TitleTextComponent(
             modifier = Modifier.align(Alignment.Center),
 //            text = "Load More From \"$text\"..."
-            text = "Load More..."
+            text = stringResource(R.string.load_more)
         )
 
         Icon(

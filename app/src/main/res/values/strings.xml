@@ -27,4 +27,5 @@
     <string name="sat_critical_reading_avg_score">SAT critical reading average score</string>
     <string name="sat_math_avg_score">SAT math average score</string>
     <string name="sat_writing_avg_score">SAT writing average score</string>
+    <string name="load_more">Load More…</string>
 </resources>

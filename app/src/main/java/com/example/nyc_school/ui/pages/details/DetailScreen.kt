@@ -91,7 +91,7 @@ fun DetailScreen(
                 it.content?.let { list ->
                     DisplayDetailScreen(
                         model = list[0] as SchoolModel,
-                        score = scoreApiResponse?.content?.get(0) as ScoreModel
+                        score = scoreApiResponse?.content?.firstOrNull() as ScoreModel?
                     )
                 }
             }
@@ -112,7 +112,7 @@ fun DetailScreen(
 @Composable
 fun DisplayDetailScreen(
     model: SchoolModel,
-    score: ScoreModel
+    score: ScoreModel?
 ) {
 
     val pages = listOf(
@@ -222,47 +222,57 @@ fun InfoPage(
 @Composable
 fun ScorePage(
     modifier: Modifier = Modifier,
-    score: ScoreModel
+    score: ScoreModel?
 ) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
+    score?.let {
         Column(
             modifier = modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            TitleTextComponent(text = stringResource(R.string.num_of_sat_test_takers))
-            HeaderTextComponent(text = score.numOfSatTestTakers.toString())
-        }
+            Column(
+                modifier = modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                TitleTextComponent(text = stringResource(R.string.num_of_sat_test_takers))
+                HeaderTextComponent(text = it.numOfSatTestTakers.toString())
+            }
 
-        Column(
-            modifier = modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            TitleTextComponent(text = stringResource(R.string.sat_critical_reading_avg_score))
-            HeaderTextComponent(text = score.satCriticalReadingAvgScore.toString())
-        }
+            Column(
+                modifier = modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                TitleTextComponent(text = stringResource(R.string.sat_critical_reading_avg_score))
+                HeaderTextComponent(text = it.satCriticalReadingAvgScore.toString())
+            }
 
-        Column(
-            modifier = modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            TitleTextComponent(text = stringResource(R.string.sat_math_avg_score))
-            HeaderTextComponent(text = score.satMathAvgScore.toString())
-        }
+            Column(
+                modifier = modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                TitleTextComponent(text = stringResource(R.string.sat_math_avg_score))
+                HeaderTextComponent(text = it.satMathAvgScore.toString())
+            }
 
-        Column(
-            modifier = modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            TitleTextComponent(text = stringResource(R.string.sat_writing_avg_score))
-            HeaderTextComponent(text = score.satWritingAvgScore.toString())
+            Column(
+                modifier = modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                TitleTextComponent(text = stringResource(R.string.sat_writing_avg_score))
+                HeaderTextComponent(text = it.satWritingAvgScore.toString())
+            }
+        }
+    } ?: run {
+        Box(modifier = modifier.fillMaxSize()) {
+            HeaderTextComponent(
+                text = "No information yet",
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
     }
+
 }
