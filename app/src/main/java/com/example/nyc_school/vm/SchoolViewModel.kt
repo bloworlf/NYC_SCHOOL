@@ -1,4 +1,4 @@
-package com.example.nyc_school.data.vm
+package com.example.nyc_school.vm
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

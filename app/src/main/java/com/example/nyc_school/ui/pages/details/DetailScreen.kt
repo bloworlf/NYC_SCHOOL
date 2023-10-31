@@ -37,8 +37,8 @@ import com.example.nyc_school.R
 import com.example.nyc_school.data.model.SchoolModel
 import com.example.nyc_school.data.model.ScoreModel
 import com.example.nyc_school.data.network.response.ErrorCode
-import com.example.nyc_school.data.vm.SchoolViewModel
-import com.example.nyc_school.data.vm.ScoreViewModel
+import com.example.nyc_school.vm.SchoolViewModel
+import com.example.nyc_school.vm.ScoreViewModel
 import com.example.nyc_school.ui.components.BodyTextComponent
 import com.example.nyc_school.ui.components.ErrorDialog
 import com.example.nyc_school.ui.components.Expandable
