@@ -21,6 +21,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material.icons.outlined.ExpandLess
 import androidx.compose.material.icons.outlined.ExpandMore
@@ -58,12 +59,22 @@ enum class Themes(@StringRes val title: Int, val value: Int) {
         }
     }
 }
-
+data class Language(
+    val title: String,
+    val value: String,
+    val country: String
+)
 @Composable
 fun SettingsScreen(
     navActions: AppNavigationActions
 ) {
     val context = LocalContext.current
+
+    val languageList = listOf(
+        Language(stringResource(id = R.string.english), "en", "US"),
+        Language(stringResource(id = R.string.french), "fr", "FR"),
+//        Language(stringResource(id = R.string.creole), "ht", "HT"),
+    )
 
     Column(
         modifier = Modifier
@@ -73,6 +84,47 @@ fun SettingsScreen(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+
+        OptionsItem(
+            title = stringResource(R.string.language),
+            subTitle = stringResource(R.string.change_the_application_s_display_language),
+            icon = Icons.Filled.Language,
+//            onItemClick = {},
+            content = { paddingValues ->
+                var selectedIndex by remember {
+                    mutableIntStateOf(
+                        languageList.indexOf(
+                            languageList.find {
+                                it.value == Common.preferences(context)
+                                    .getString(
+                                        Common.PREFERENCES.LANGUAGE_KEY,
+                                        Common.DEFAULT_LANGUAGE
+                                    )
+                            }
+                        )
+                    )
+                }
+
+                RadioGroupComponent(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(paddingValues),
+                    items = languageList,
+                    selectedIndex = selectedIndex,
+                    selectedItemToString = { it.title },
+                    onItemSelected = { index, item ->
+                        if (selectedIndex != index) {
+                            selectedIndex = index
+                            Common.preferences(context)
+                                .edit()
+                                .putString(Common.PREFERENCES.LANGUAGE_KEY, item.value)
+                                .apply()
+                            (context as? Activity)?.recreate()
+                        }
+                    }
+                )
+            }
+        )
 
         OptionsItem(
             title = stringResource(R.string.theme),

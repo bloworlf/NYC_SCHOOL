@@ -144,6 +144,14 @@ fun AppBar(
             stringResource(id = Screen.Details.resourceId)
         }
 
+        Screen.Settings.route -> {
+            stringResource(id = Screen.Settings.resourceId)
+        }
+
+        "${Screen.Details.route}/{dbn}" -> {
+            stringResource(id = Screen.Details.resourceId)
+        }
+
         else -> {
 //            currentDestination?.label.toString()
             currentDestination?.route.toString().split("/")[0]

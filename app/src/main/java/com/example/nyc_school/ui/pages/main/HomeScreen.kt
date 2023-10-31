@@ -48,7 +48,6 @@ import com.example.nyc_school.ui.navigation.AppNavigationActions
 import com.example.nyc_school.ui.navigation.Screen
 import com.example.nyc_school.ui.theme.customColorsPalette
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen(
     navActions: AppNavigationActions,
@@ -221,7 +220,8 @@ fun Footer(
 
         Icon(
             modifier = Modifier.align(Alignment.CenterEnd),
-            imageVector = Icons.Filled.ChevronRight, contentDescription = ""
+            imageVector = Icons.Filled.ChevronRight, contentDescription = "",
+            tint = MaterialTheme.customColorsPalette.menuIconColor
         )
     }
 }

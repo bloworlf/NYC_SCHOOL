@@ -30,8 +30,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.nyc_school.R
 import com.example.nyc_school.data.model.SchoolModel
 import com.example.nyc_school.data.model.ScoreModel
 import com.example.nyc_school.data.network.response.ErrorCode
@@ -115,7 +117,7 @@ fun DisplayDetailScreen(
 
     val pages = listOf(
         ViewPagerContent(
-            title = "Info",
+            title = stringResource(R.string.info),
             content = {
                 InfoPage(
                     modifier = Modifier.padding(it),
@@ -124,7 +126,7 @@ fun DisplayDetailScreen(
             }
         ),
         ViewPagerContent(
-            title = "Scores",
+            title = stringResource(R.string.scores),
             content = {
                 ScorePage(
                     modifier = Modifier.padding(it),
@@ -177,7 +179,7 @@ fun InfoPage(
             Spacer(modifier = Modifier.height(8.dp))
             Expandable(
                 enabled = false,
-                title = "extracurricular_activities",
+                title = stringResource(R.string.extracurricular_activities),
                 onValueUpdated = {},
                 listValues = model.extracurricularActivities?.split(","),
                 content = { value, enabled, onValueUpdated ->
@@ -227,23 +229,39 @@ fun ScorePage(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Column {
-            TitleTextComponent(text = "num_of_sat_test_takers")
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            TitleTextComponent(text = stringResource(R.string.num_of_sat_test_takers))
             HeaderTextComponent(text = score.numOfSatTestTakers.toString())
         }
 
-        Column {
-            TitleTextComponent(text = "sat_critical_reading_avg_score")
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            TitleTextComponent(text = stringResource(R.string.sat_critical_reading_avg_score))
             HeaderTextComponent(text = score.satCriticalReadingAvgScore.toString())
         }
 
-        Column {
-            TitleTextComponent(text = "sat_math_avg_score")
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            TitleTextComponent(text = stringResource(R.string.sat_math_avg_score))
             HeaderTextComponent(text = score.satMathAvgScore.toString())
         }
 
-        Column {
-            TitleTextComponent(text = "sat_writing_avg_score")
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            TitleTextComponent(text = stringResource(R.string.sat_writing_avg_score))
             HeaderTextComponent(text = score.satWritingAvgScore.toString())
         }
     }

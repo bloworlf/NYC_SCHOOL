@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NYC_SCHOOL</string>
+    <string name="please_wait">Patientez s\'il vous plaît…</string>
+    <string name="home">Accueil</string>
+    <string name="search">Recherche</string>
+    <string name="more">Plus</string>
+    <string name="details">Détails</string>
+    <string name="splash">Splash</string>
+    <string name="settings">Paramètres</string>
+    <string name="change_the_app_s_configuration">Changer la configuration de l\'application</string>
+    <string name="oops">Oups!</string>
+    <string name="error_occurred">Une erreur s\'est produite</string>
+    <string name="ok">OK</string>
+    <string name="category">Catégorie</string>
+    <string name="light">Clair</string>
+    <string name="dark">Sombre</string>
+    <string name="theme">Thème</string>
+    <string name="change_the_application_s_display_theme">Changer l\'apparance de l\'application</string>
+    <string name="english">Anglais</string>
+    <string name="french">Français</string>
+    <string name="language">Langage</string>
+    <string name="change_the_application_s_display_language">Changer la langue de l\'application</string>
+    <string name="info">Informations</string>
+    <string name="scores">Points</string>
+    <string name="extracurricular_activities">Activités extra-scolaires</string>
+    <string name="num_of_sat_test_takers">Nombre de candidats au test SAT</string>
+    <string name="sat_critical_reading_avg_score">Score moyen de lecture critique SAT</string>
+    <string name="sat_math_avg_score">Score moyen en mathématiques SAT</string>
+    <string name="sat_writing_avg_score">Score moyen d\'écriture SAT</string>
+</resources>

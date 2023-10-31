@@ -16,4 +16,15 @@
     <string name="dark">Dark</string>
     <string name="theme">Theme</string>
     <string name="change_the_application_s_display_theme">Change the application\'s display theme</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="language">Language</string>
+    <string name="change_the_application_s_display_language">Change the application\'s display language</string>
+    <string name="info">Info</string>
+    <string name="scores">Scores</string>
+    <string name="extracurricular_activities">Extracurricular activities</string>
+    <string name="num_of_sat_test_takers">Number of SAT Test Takers</string>
+    <string name="sat_critical_reading_avg_score">SAT critical reading average score</string>
+    <string name="sat_math_avg_score">SAT math average score</string>
+    <string name="sat_writing_avg_score">SAT writing average score</string>
 </resources>

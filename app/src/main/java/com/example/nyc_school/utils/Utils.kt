@@ -8,6 +8,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 
 object Utils {
@@ -39,18 +41,11 @@ object Utils {
     }
 
     fun Context.openMaps(lat: String, lon: String, place: String? = null) {
-//        val gmmIntentUri = Uri.parse("google.navigation:q=$lat,$lon")
-//        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//        mapIntent.setPackage("com.google.android.apps.maps")
-//        this.startActivity(mapIntent)
+//        val uri = "geo:$lat,$lon${place?.let { "?q$it" }}"
+        val uri = "geo:0,0?q=$lat,$lon${place?.let { "(${URLEncoder.encode(it, StandardCharsets.UTF_8.toString())})" }}"
+//        val uri = "http://maps.google.com/maps?f=d&hl=en&saddr=$lat,$lon"
 
-        val gmmIntentUri = Uri.parse(
-            "geo:$lat,$lon${
-                place?.let {
-                    "?q$it"
-                }
-            }"
-        )
+        val gmmIntentUri = Uri.parse(uri)
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         mapIntent.resolveActivity(packageManager)?.let {
