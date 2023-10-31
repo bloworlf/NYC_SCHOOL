@@ -150,4 +150,7 @@ dependencies {
 //    androidTestImplementation 'org.mockito:mockito-android:2.2.0'
     testImplementation("org.mockito:mockito-inline:3.11.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+    //Custom crash activity
+    implementation("cat.ereza:customactivityoncrash:2.4.0")
 }
