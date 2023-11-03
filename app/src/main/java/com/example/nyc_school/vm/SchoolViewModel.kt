@@ -3,6 +3,7 @@ package com.example.nyc_school.vm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nyc_school.data.model.SchoolModel
 import com.example.nyc_school.data.network.response.ApiResponse
 import com.example.nyc_school.data.repo.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +17,8 @@ class SchoolViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    val liveData: MutableLiveData<ApiResponse> by lazy {
-        MutableLiveData<ApiResponse>()
+    val liveData: MutableLiveData<ApiResponse<List<SchoolModel>>> by lazy {
+        MutableLiveData<ApiResponse<List<SchoolModel>>>()
     }
 
     val isRefreshing: MutableLiveData<Boolean> by lazy {

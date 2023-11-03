@@ -94,8 +94,8 @@ fun DetailScreen(
                 //display data
                 it.content?.let { list ->
                     DisplayDetailScreen(
-                        model = list[0] as SchoolModel,
-                        score = scoreApiResponse?.content?.firstOrNull() as ScoreModel?
+                        model = list[0],
+                        score = scoreApiResponse?.content?.firstOrNull()
                     )
                 }
             }

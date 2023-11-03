@@ -690,4 +690,4 @@ data class SchoolModel(
     val website: String? = null,
     @SerializedName("zip")
     val zip: String? = null
-): ApiResponseContent()
+)

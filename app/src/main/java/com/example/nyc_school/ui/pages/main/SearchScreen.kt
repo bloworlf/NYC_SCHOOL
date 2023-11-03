@@ -67,7 +67,7 @@ fun SearchScreen(
                     //display data
                     it.content?.let { list ->
                         DisplayData(
-                            content = list as List<SchoolModel>,
+                            content = list,
                             onItemClick = {},
                             onFooterClick = {},
                             onRefresh = {}

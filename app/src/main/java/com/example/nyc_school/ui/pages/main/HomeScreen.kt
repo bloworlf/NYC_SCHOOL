@@ -83,7 +83,7 @@ fun HomeScreen(
                 //display data
                 DisplayData(
                     isRefreshing = isRefreshing ?: false,
-                    content = it.content as List<SchoolModel>,
+                    content = it.content,
                     onItemClick = { dbn ->
                         navActions.navigateTo(
                             screen = Screen.Details,

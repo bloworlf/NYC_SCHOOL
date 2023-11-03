@@ -59,7 +59,7 @@ fun CategoryScreen(
             ErrorCode.SUCCESS -> {
                 //display data
                 DisplayCategory(
-                    content = it.content as List<SchoolModel>,
+                    content = it.content,
                     onItemClick = { dbn ->
                         navActions.navigateTo(
                             screen = Screen.Details,

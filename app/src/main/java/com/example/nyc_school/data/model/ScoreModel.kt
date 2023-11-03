@@ -16,4 +16,4 @@ data class ScoreModel(
     val satWritingAvgScore: String?,
     @SerializedName("school_name")
     val schoolName: String?
-):ApiResponseContent()
+)
